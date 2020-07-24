@@ -1,9 +1,23 @@
 import React from 'react';
 import useFetchJobs from './UseFetchJobs'
 import {Container} from 'react-bootstrap'
+import Job from './Job'
+import JobsPagination from './JobsPagination';
+import SearchForm from './SearchForm';
 
 function App() {
-  const {jobs, loading, error} = useFetchJobs()
+  const [params, setParams] = useState({})
+  const [page, setPage] = useState(1)
+  const { jobs, loading, error, hasNextPage } = useFetchJobs(params, page)
+
+  function handleParamChange(e) {
+    const param = e.target.name
+    const value = e.target.value
+    setPage(1)
+    setParams(prevParams => {
+      return { ...prevParams, [param]: value }
+    })
+  }
 
   return (
     <Container>
