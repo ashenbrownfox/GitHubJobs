@@ -7,7 +7,7 @@ const ACTIONS = {
     ERROR: 'error',
     UPDATE_HAS_NEXT_PAGE: 'update-has-next-page'
 }
-const BASE_URL = "https://jobs.github.com/positions.json"
+const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json'
 function reducer(state,action){
     switch (action.type) {
         case ACTIONS.MAKE_REQUEST:
